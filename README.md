@@ -8,7 +8,7 @@ An express website for downloading YouTube and Spotify music in different format
 
 What is `client` in the configuration file ?
 
-If you enable the client function so 'true', then you will be able to configure the following information : `token`, `webhookID` and `webhookPassword`. 
+If you enable the client function so 'true', then you will be able to configure the following information : `token` (token of your Discord bot), `webhookID` and `webhookPassword`. 
 If you enable this function it will send a message for each request on the site in the configured webhook.
 If you don't know how to create a Discord webhook, just click [here](https://discordjs.guide/popular-topics/webhooks.html#creating-webhooks).
 If you don't want to use the logs you can disable the function by assigning the value 'false' to 'client'.
