@@ -1,0 +1,7 @@
+{
+    "port": 3000,
+    "client": true,
+    "token": "XXX",
+    "webhookID": "XXX",
+    "webhookPassword": "XXX"
+}

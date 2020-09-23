@@ -1,0 +1,74 @@
+<%- include("./blocks/header.ejs") %>
+<br><br><br><br><br><br>
+
+<div class="container">
+    <div class="jumbotron bg-dark text-white playerbox">
+        <h3 class="text-responsive"><a href="<%= data.url %>" id="url" target="_blank"><%= data.title %></a></h3>
+        <br>
+        <div class="moosic">
+            <audio id="player" class="player" controls autoplay>
+                <source src="<%= stream %>">
+            </audio>
+        </div>
+        <br>
+        <h5>Artist : <%= data.channel.name %></h5>
+        <h5>Duration : <%= duration %></h5>
+        <h5>Downloads : <%= downloads %></h5>
+    </div>
+</div>
+
+<script>
+    var createPlayer = () => {
+        return new Plyr('.player', {
+            invertTime: false
+        });
+    };
+    var pl;
+    pl = createPlayer();
+    function toggle() {
+        let player = document.getElementById("player").tagName;
+        let lastp = {
+            time: pl.currentTime,
+            volume: pl.volume,
+            muted: pl.muted,
+            speed: pl.speed
+        };
+        $(".moosic").remove();
+        $('.playerbox').html('<div class="moosic"><audio id="player" class="player" controls autoplay><source src="<%= stream %>"></audio></div>' + $(".playerbox").html());
+        pl = createPlayer()
+            .volume = lastp.volume
+                .muted = lastp.muted
+                    .speed = lastp.speed;
+        player.once('ready', () => {
+            pl.currentTime = lastp.time;
+        });
+    }
+</script>
+
+<form method="POST" autocomplete="off">
+    <div class="container">
+        <div class="jumbotron bg-dark text-white">
+            <center>
+                <h5>Download the file</h5>
+            </center><br>
+            <input type="hidden" name="video" value="<%= data.url %>" />
+            <center>
+                <button input type="hidden" name="type" value="mp3" type="submit" id="button"
+                    class="btn btn-primary">MP3</button>
+                <button input type="hidden" name="type" value="mp4" type="submit" id="button"
+                    class="btn btn-primary">MP4</button>
+                <button input type="hidden" name="type" value="mov" type="submit" id="button"
+                    class="btn btn-primary">MOV</button>
+                <button input type="hidden" name="type" value="avi" type="submit" id="button"
+                    class="btn btn-primary">AVI</button>
+                <button input type="hidden" name="type" value="flv" type="submit" id="button"
+                    class="btn btn-primary">FLV</button>
+                <button input type="hidden" name="type" value="mkv" type="submit" id="button"
+                    class="btn btn-primary">MKV</button>
+            </center>
+        </div>
+    </div>
+</form>
+</body>
+
+</html>
